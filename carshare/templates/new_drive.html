@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>New Drive</title>
+</head>
+<body style="background-color: #30799B">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a style="color: lime" class="navbar-brand" href="/main-view">Car Share</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/view-search">Search Trip</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/bonus">Best Rated Trip</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container pt-5">
+    <div class="container py-5 h-100 w-75">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+
+                        <div class="col d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+
+                                <form method="POST">
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">
+                                        Create New Trip
+                                    </h5>
+                                    {% if message %}
+                                        <div>
+                                            <h6 class="text-danger">Please check the following conditions</h6>
+                                            <ul>
+                                                {% for text in message %}
+                                                    <li class="text-danger">{{ text }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="from">
+                                            From<span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" id="from" name="from" required
+                                               class="form-control form-control-lg"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="to">
+                                            Destination<span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" id="to" name="to" required
+                                               class="form-control form-control-lg"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="maxCapacity">
+                                            Maximum Capacity<span class="text-danger">*</span>
+                                        </label>
+                                        <input type="number" id="maxCapacity" name="maxCapacity" required
+                                               placeholder="Allowed value is between 1 to 10"
+                                               class="form-control form-control-lg"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="cost">
+                                            Cost<span class="text-danger">*</span>
+                                        </label>
+                                        <input type="number" id="cost" name="cost" required
+                                               class="form-control form-control-lg"/>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="cost">
+                                            Transport Type<span class="text-danger">*</span>
+                                        </label>
+                                        <div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="transport" required
+                                                       id="transport1" value="1">
+                                                <label class="form-check-label" for="transport1">Auto</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="transport" required
+                                                       id="transport2" value="2">
+                                                <label class="form-check-label" for="transport2">Bus</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="transport" required
+                                                       id="transport3" value="3">
+                                                <label class="form-check-label" for="transport3">Motor-Bike</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="dateTime">
+                                            Date and Time<span class="text-danger">*</span>
+                                        </label>
+                                        <input type="datetime-local" id="dateTime" name="dateTime" required
+                                               class="form-control form-control-lg"/>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="description">Description</label>
+                                        <textarea class="form-control" id="description" name="description"
+                                                  rows="3"></textarea>
+                                    </div>
+
+                                    <div class="pt-1 mb-4">
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Submit</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <p class="text-center my-5">&copy;2022 all rights reserved.</p>
+</footer>
+</body>
+</html>

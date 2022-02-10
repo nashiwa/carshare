@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a style="color: lime" class="navbar-brand" href="/">Car Share</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/register">Register</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<div class="container pt-5">
+    <div class="row py-3">
+        <h2>Availabe Rides</h2>
+    </div>
+    <div class="row">
+        {% if rides %}
+            {% for i in rides %}
+                <div class="col-md-3 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ i[1] }} TO {{ i[2] }}</h4>
+                            <p class="card-text">Date : {{ i[3] }}</p>
+                            <p class="card-text">Price : {{ i[5] }}</p>
+                            <p class="card-text">Provider : {{ i[7] }}</p>
+                            <p class="card-text">Availabe Seat : {{ i[4] }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-md-5 mb-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">No Rides Availabe</h4>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<footer>
+    <p class="text-center my-5">&copy; 2021 all rights reserved.</p>
+</footer>
+</body>
+</html>
